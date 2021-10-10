@@ -4,7 +4,6 @@ const DEFAULT_IMAGE = '/images/default_logo.png';
 
 const Card = ({card}) => {
     const {
-        id,
         name,
         company,
         theme, 
@@ -15,10 +14,10 @@ const Card = ({card}) => {
         fileURL
     } = card;
     const url = fileURL || DEFAULT_IMAGE;
-    console.log(url);
+    
     return (
         <li className={`${styles.card} ${getStyles(theme)}`}>
-            <image className={styles.avatar} src={url} alt="profile Image">image</image>
+            <img className={styles.avatar} src={url} alt="profile"/>
             <div className={styles.info}>
                 <h1 className={styles.name}>{name}</h1>
                 <p className={styles.company}>{company}</p>
@@ -31,6 +30,7 @@ const Card = ({card}) => {
 };
 
 function getStyles(theme) {
+    
     switch (theme) {
         case 'dark':
         return styles.dark;

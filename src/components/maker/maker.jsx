@@ -7,41 +7,41 @@ import Preview from '../preview/preview';
 import { useHistory } from 'react-router';
 
 const Maker = ({authService}) => {
-    const [cards, setCards] = useState([
-        {
-            id: '1',
-            name: 'younah',
-            company: 'ibiz',
-            theme: 'light', 
-            title: 'Software Engineer',
-            email: 'ynshin@ibizsoftware.co.kr',
-            message: 'go for it',
-            fileName: 'ynshin',
-            fileURL: ''
+    const [cards, setCards] = useState({
+        1: {
+          id: '1',
+          name: 'Ellie',
+          company: 'Samsung',
+          theme: 'dark',
+          title: 'Software Engineer',
+          email: 'ellie@gmail.com',
+          message: 'go for it',
+          fileName: 'ellie',
+          fileURL: null,
         },
-        {
-            id: '2',
-            name: 'younah2',
-            company: 'ibiz2',
-            theme: 'light', 
-            title: 'Software Engineer2',
-            email: 'ynshin2@ibizsoftware.co.kr',
-            message: 'go for it2',
-            fileName: 'ynshin2',
-            fileURL: ''
+        2: {
+          id: '2',
+          name: 'Ellie2',
+          company: 'Samsung',
+          theme: 'light',
+          title: 'Software Engineer',
+          email: 'ellie@gmail.com',
+          message: 'go for it',
+          fileName: 'ellie',
+          fileURL: 'ellie.png',
         },
-        {
-            id: '3',
-            name: 'younah3',
-            company: 'ibiz3',
-            theme: 'dark', 
-            title: 'Software Engineer3',
-            email: 'ynshin@ibizsoftware.co.kr3',
-            message: 'go for it3',
-            fileName: 'ynshin3',
-            fileURL: ''
-        }
-    ]);
+        3: {
+          id: '3',
+          name: 'Ellie3',
+          company: 'Samsung',
+          theme: 'colorful',
+          title: 'Software Engineer',
+          email: 'ellie@gmail.com',
+          message: 'go for it',
+          fileName: 'ellie',
+          fileURL: null,
+        },
+      });
     const history = useHistory();
 
     const onLogout = () => {
@@ -56,16 +56,29 @@ const Maker = ({authService}) => {
         })
     });
 
-    const addCard = (card) => {
-        const updated = [...cards, card];
-        setCards(updated);
+    const createOrUpdateCard = card => {
+        setCards(cards => {
+            const updated = { ...cards };
+            updated[card.id] = card;
+            return updated;
+        });
+    }
+
+    const deleteCard = (card) => {
+        console.log(1);
+        setCards(cards => {
+            const updated = { ...cards };
+            console.log(card.id);
+            delete updated[card.id];
+            return updated;
+        });
     }
 
     return (
         <section className={styles.maker}>
             <Header onLogout={onLogout}/>
             <div className={styles.container}>
-                <Editor cards={cards} addCard={addCard}/>
+                <Editor cards={cards} addCard={createOrUpdateCard} editCard={createOrUpdateCard} deleteCard={deleteCard}/>
                 <Preview cards={cards}/>
             </div>
             <Footer/>

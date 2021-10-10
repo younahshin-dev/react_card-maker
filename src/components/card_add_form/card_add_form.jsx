@@ -13,7 +13,6 @@ const CardAddForm = ({onAdd}) => {
     const emailRef = useRef();
     const themeRef = useRef();
     const messageRef = useRef();
-
     const formRef = useRef();
 
     const onSubmit = (event) => {
@@ -43,9 +42,9 @@ const CardAddForm = ({onAdd}) => {
             <input ref={titleRef} className={styles.input} type="text" name="title" placeholder="title"/>
             <input ref={emailRef} className={styles.input} type="text" name="email" placeholder="email"/>
             <select ref={themeRef} className={styles.select} name="theme" placeholder="theme">
-                <option value="light">Light</option>
-                <option value="dark">Dark</option>
-                <option value="colorful">Colorful</option>
+                <option value="light">light</option>
+                <option value="dark">dark</option>
+                <option value="colorful">colorful</option>
             </select>
             <input ref={messageRef} className={styles.textarea} type="textarea" name="message" placeholder="message"/>
             <div className={styles.fileInput}>
