@@ -10,7 +10,6 @@ const Card = ({card}) => {
         title,
         email,
         message,
-        fileName,
         fileURL
     } = card;
     const url = fileURL || DEFAULT_IMAGE;

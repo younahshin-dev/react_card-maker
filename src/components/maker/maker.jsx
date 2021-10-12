@@ -28,7 +28,7 @@ const Maker = ({ FileInput, authService, cardRepository }) => {
         //useEffect 에서 리턴을 하면 react가 컴포넌트가 언마운트 되었을때 자동으로 리턴한 함수를 호출
          return () => stopSync();
 
-    }, [userId]);
+    }, [userId, cardRepository]);
 
     // 로그인 관련  useEffect
     useEffect(()=> {
@@ -39,7 +39,7 @@ const Maker = ({ FileInput, authService, cardRepository }) => {
                 history.push('/');
             }
         })
-    });
+    }, [userId, history, authService]);
 
     const createOrUpdateCard = card => {
         setCards(cards => {

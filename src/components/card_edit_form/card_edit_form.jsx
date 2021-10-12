@@ -20,7 +20,6 @@ const CardEditForm = ({ FileInput, card, editCard, deleteCard }) => {
         message,
         theme,
         fileName,
-        fileURL,
     } = card;
 
     const onChange = (event) => {
